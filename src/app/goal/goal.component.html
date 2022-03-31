@@ -1,14 +1,17 @@
 <div>
-    <!-- Accessing a variable -->
-    <h1> {{ title }}</h1>
-    <!-- Accessing an array -->
-    <p>My goal for today is {{ goals }}</p>
-    <ul>
-      <!-- looping over the goals array and embedding each goal to a ul>li -->
-      <li *ngFor="let goal of goals">
-        {{goal.name}}
-        <app-goal-detail [goal]="goal"></app-goal-detail>
-      </li>
-    </ul>
-    <p *ngIf="goals.length>5"> Your goals are too many</p>
-  </div>
+  <!-- Accessing a variable -->
+  <h1>{{ title }}</h1>
+  <hr />
+  <ul>
+    <!-- looping over the goals array and embedding each goal to a ul>li -->
+    <div *ngFor="let goal of goals; let i = index">
+      <li>{{ goal.name }}</li>
+      <button (click)="toggleDetails(i)">Toggle Details</button>
+      <app-goal-detail
+        *ngIf="goal.showDescription"
+        [goal]="goal"
+      ></app-goal-detail>
+    </div>
+  </ul>
+  <p *ngIf="goals.length > 5">Your goals are too many</p>
+</div>
