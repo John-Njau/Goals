@@ -1,0 +1,13 @@
+<div>
+    <!-- Accessing a variable -->
+    <h1> {{ title }}</h1>
+    <!-- Accessing an array -->
+    <p>My goal for today is {{ goals }}</p>
+    <ul>
+      <!-- looping over the goals array and embedding each goal to a ul>li -->
+      <li *ngFor="let goal of goals">
+        {{goal.id}}: {{goal.name}}
+      </li>
+    </ul>
+    <p *ngIf="goals.length>5"> Your goals are too many</p>
+  </div>
