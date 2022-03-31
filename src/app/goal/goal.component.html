@@ -5,7 +5,7 @@
   <ul>
     <!-- looping over the goals array and embedding each goal to a ul>li -->
     <div *ngFor="let goal of goals; let i = index">
-      <li appStrikethrough>{{ goal.name }}</li>
+      <li appStrikethrough>{{ goal.name|uppercase }} due on {{ goal.completeDate|date|uppercase }}.</li>
       <button (click)="toggleDetails(i)">Toggle Details</button>
       <app-goal-detail
         *ngIf="goal.showDescription"
