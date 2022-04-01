@@ -5,14 +5,14 @@
   <ul>
     <!-- looping over the goals array and embedding each goal to a ul>li -->
     <div *ngFor="let goal of goals; let i = index">
-      <li appStrikethrough>{{ goal.name|uppercase }} due on {{ goal.completeDate|date|uppercase }}.</li>
+      <li>{{ goal.name|uppercase }} due on {{ goal.completeDate|date|uppercase }}.</li>
       <button (click)="toggleDetails(i)">Toggle Details</button>
       <app-goal-detail
         *ngIf="goal.showDescription"
         [goal]="goal"
-        (isComplete)="completeGoal($event, i)"
+        (isComplete)="deleteGoal($event, i)"
       ></app-goal-detail>
     </div>
   </ul>
-  <p *ngIf="goals.length > 5">Your goals are too many</p>
+  <p *ngIf="goals.length > 6">Your goals are too many</p>
 </div>

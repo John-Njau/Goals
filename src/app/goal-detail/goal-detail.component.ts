@@ -12,8 +12,12 @@ export class GoalDetailComponent implements OnInit {
   // is Complete is the event emitter that takes in a boolean
   @Output() isComplete = new EventEmitter<boolean>();
 
-  goalComplete(complete: boolean) {
+  goalDelete(complete: boolean) {
     this.isComplete.emit(complete);
+  }
+
+  goalStrikethrough(){
+    
   }
   constructor() { }
 
