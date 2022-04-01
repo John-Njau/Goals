@@ -1,18 +1,21 @@
-<div>
-  <!-- Accessing a variable -->
+<div class="container">
   <h1>{{ title }}</h1>
-  <hr />
-  <ul>
-    <!-- looping over the goals array and embedding each goal to a ul>li -->
-    <div *ngFor="let goal of goals; let i = index">
-      <li>{{ goal.name|uppercase }} due on {{ goal.completeDate|date|uppercase }}.</li>
-      <button (click)="toggleDetails(i)">Toggle Details</button>
-      <app-goal-detail
-        *ngIf="goal.showDescription"
-        [goal]="goal"
-        (isComplete)="deleteGoal($event, i)"
-      ></app-goal-detail>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div *ngFor='let goal of goals;let i = index'>
+        <div>
+          <h4 id={{i}} appStrikethrough>{{goal.name}} due on {{goal.completeDate|date|uppercase}}</h4>
+          <button (click)='toggleDetails(i)' class="btn btn-primary">Toggle Details</button>
+        </div>
+
+        <div *ngIf='goal.showDescription'>
+          <app-goal-detail  [goal]='goal' (isComplete) = 'deleteGoal($event,i)'></app-goal-detail>
+        </div>
+      </div>
     </div>
-  </ul>
-  <p *ngIf="goals.length > 6">Your goals are too many</p>
+  </div>
+
+  <p *ngIf='goals.length > 5'>You have too many goals</p>
 </div>
