@@ -1,4 +1,6 @@
-<p>{{goal.description}}</p>
+<div class="bg-secondary">
+<p >{{goal.description}}</p>
 <p>This goal will be complete in {{ goal.completeDate|dateCount}} days.</p>
-<button (click)="goalStrikethrough()" appStrikethrough> Complete</button>
-<button (click)="goalDelete(true)"> Delete Goal</button>
+<button (click)="goalStrikethrough()" appStrikethrough class="btn btn-success"> Complete</button>
+<button (click)="goalDelete(true)" class="btn btn-danger m-3"> Delete Goal</button>
+</div>
