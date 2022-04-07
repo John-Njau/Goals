@@ -8,12 +8,15 @@ import { Goal } from '../goal';
 })
 export class GoalFormComponent implements OnInit {
 
+  // To use the goal class, you have to import it first. 
+  // creating our goal using our goal blueprint in goal.ts
   newGoal = new Goal(0, "", "", new Date());
+
   @Output() addGoal = new EventEmitter<Goal>();
 
+  // submit goal function
   submitGoal() {
-    this.addGoal.emit(
-      this.newGoal)
+    this.addGoal.emit(this.newGoal)
   }
 
   constructor() { }
