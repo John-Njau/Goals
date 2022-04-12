@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Goal } from '../goal'
-
+import { GoalService } from '../goal-service/goal.service';
+import { AlertService } from '../alert-service/alert.service';
 
 @Component({
   selector: 'app-goal',
@@ -9,8 +10,15 @@ import { Goal } from '../goal'
 })
 export class GoalComponent implements OnInit {
 
+  goals: Goal[];
+  alertService: AlertService;
 
-  addNewGoal(goal){
+  constructor(goalService: GoalService, alertService: AlertService) {
+    this.goals = goalService.getGoals();
+    this.alertService = alertService;
+  }
+
+  addNewGoal(goal) {
     let goalLength = this.goals.length;
     goal.id = goalLength + 1;
     goal.completeDate = new Date(goal.completeDate)
@@ -27,10 +35,10 @@ export class GoalComponent implements OnInit {
 
       if (toDelete) {
         this.goals.splice(index, 1)
+        this.alertService.alertMe("The goal has been deleted");
       }
     }
   }
-  constructor() { }
 
   ngOnInit(): void {
   }
